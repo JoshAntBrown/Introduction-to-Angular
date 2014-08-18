@@ -3,6 +3,10 @@ IntroductionToAngular
 
 Read the tasks pdf for a list of things to do, the slides pdf contains the slides from the talk.
 
+You will need Node.JS to run the server, which you can then run by going to the /app directory in your terminal and running 'node server' then navigating to http://localhost:3000/ in your browser. 
+
+If you don't have node you can still run the app but won't be able to complete the factory api step, in which case you'll want to load the index.html inside /app/public directory.
+
 
 ##Tasks
 

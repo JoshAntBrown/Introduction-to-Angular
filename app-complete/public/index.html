@@ -1,0 +1,81 @@
+<!--
+  Introduction to AngularJS
+  Josh Brown
+
+  @JoshAntBrown
+
+  1. Data Binding and Directives
+  2. Using Filters
+  3. Creating Controllers
+  4. Building Factories
+-->
+
+<!doctype html>
+<html ng-app="projectManagementApp" class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Angular Project Management</title>
+    <link rel="stylesheet" href="stylesheets/app.css" />
+    <script src="bower_components/modernizr/modernizr.js"></script>
+  </head>
+  <body>
+    <nav class="top-bar" data-topbar>
+      <ul class="title-area">
+        <li class="name">
+          <h1><a href="#">Angular Project Management</a></h1>
+        </li>
+        <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+      </ul>
+
+      <section class="top-bar-section">
+        <!-- Right Nav Section -->
+        <ul class="right">
+          <li class="active"><a href="#">Projects</a></li>
+          <li class="has-dropdown">
+            <a href="#">Settings</a>
+            <ul class="dropdown">
+              <li><a href="#">Account</a></li>
+            </ul>
+          </li>
+        </ul>
+      </section>
+    </nav>
+  
+    <section ng-controller="projectsCtrl">
+
+      <input type="text" id="search-field" ng-model="projectSearch" placeholder="Search">
+
+      <div class="row">
+        <div class="large-12 columns">
+          <div>
+            
+            <div data-alert class="alert-box secondary" ng-show="projectSearch">
+              Searching for: {{projectSearch}}
+            </div>
+
+            <table width="100%">
+              <thead>
+                <tr>
+                  <th>Project Name</th>
+                  <th>Budget</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr ng-repeat="project in projects | filter:projectSearch | orderBy:'name'">
+                  <td>{{ project.name }}</td>
+                  <td>{{ project.budget | currency:'£' }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="bower_components/foundation/js/foundation.min.js"></script>
+    <script src="bower_components/angular/angular.min.js"></script>
+    <script src="js/app.js"></script>
+  </body>
+</html>
